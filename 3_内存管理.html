@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <title>深度学习框架</title>
+    <script src="https://cdn.bootcss.com/tensorflow/0.9.1/tf.min.js"></script>
+    </script>
+    <script>
+
+    // y = 3 ^ 2 + 1
+    var y = tf.tidy(() => {
+        // a, b, 以及 one 将会被清空当 tidy 结束时。
+        const one = tf.scalar(1);
+        const a = tf.scalar(3);
+        console.log('tensors 的数量 (in tidy): ' + tf.memory().numTensors);//2
+        return a.square().add(one);
+    });
+
+    console.log('tensors 的数量 (outside tidy): ' + tf.memory().numTensors);//1
+
+    y.print();
+    
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
