@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>深度学习框架</title>
+    <script src="https://cdn.bootcss.com/tensorflow/0.9.1/tf.min.js"></script>
+    </script>
+    <script>
+
+    //设置模型 y = a * x ^ 2 + b * x + c
+    function predict(input) {
+        return tf.tidy(() => {
+            const x = tf.scalar(input);
+            const ax2 = a.mul(x.square());
+            const bx = b.mul(x);
+            const y = ax2.add(bx).add(c);
+            return y;
+        });
+    }
+
+    //设置系数 y = 2x^2 + 4x + 8
+    const a = tf.scalar(2);
+    const b = tf.scalar(4);
+    const c = tf.scalar(8);
+
+
+    //预测当输入x为2时的结果 y = 2*2^2 + 4*2 + 8 =24
+    const result = predict(2);
+    result.print()
+    
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
